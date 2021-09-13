@@ -1,0 +1,65 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+
+    <div class="logo-holder logo">
+      <a href=<% root_path %>, style="text-decoration:none;">
+        <h3>ROCK <span>GAME</span></h3>
+      </a>
+    </div>
+
+    <% if user_signed_in? %>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+
+          <%= link_to "Home", root_path, :class => 'nav-link active'  %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
+        <% else %>
+              <div class="col-md-3 text-end">
+                  <div class="social-icons">
+                    <nav class="c-nav">
+                      <ul>
+                        <li><%= link_to image_tag("https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/facebook_online_social_media-512.png", size: "42x42"), user_facebook_omniauth_authorize_path, method: :post %></li>
+                        <li><%= link_to image_tag("https://cdn2.iconfinder.com/data/icons/black-white-social-media/64/github_social_media_logo-512.png", size: "42x42"), user_github_omniauth_authorize_path, method: :post %></li>
+                        <li><%= link_to image_tag("https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/google_search_online_social_media-512.png", size: "42x42"), user_google_oauth2_omniauth_authorize_path, method: :post %></li>
+                      </ul>
+                    </nav>
+                    </div>
+                </div>
+        <% end %>
+    </nav>
+  </header>
+</div>
+
+
+<!--<div class="container">-->
+<!--  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">-->
+    <%#= link_to 'own site', root_path, :class => 'd-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none fs-4', id: "logo" %>
+
+<!--    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">-->
+<!--      <li><%#= link_to 'Home', root_path, :class => 'nav-link px-2 link-secondary' %></li>-->
+<!--      <li><%#= link_to 'Users List', users_path, :class => 'nav-link px-2 link-dark' %></li>-->
+<!--    </ul>-->
+
+    <%# if user_signed_in? %>
+<!--      <div class="dropdown">-->
+<!--        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown">-->
+          <%#= current_user.email %>
+<!--        </button>-->
+<!--        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
+<!--          <li><%#= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+    <%# else %>
+<!--      <div class="col-md-3 text-end">-->
+<!--          <div class="social-icons">-->
+<!--            <nav class="c-nav">-->
+<!--              <ul>-->
+<!--                <li><%#= link_to image_tag("https://cdn-icons-png.flaticon.com/512/733/733603.png", size: "32x32"), user_facebook_omniauth_authorize_path, method: :post %></li>-->
+<!--                <li><%#= link_to image_tag("https://cdn-icons-png.flaticon.com/512/733/733609.png", size: "32x32"), user_github_omniauth_authorize_path, method: :post %></li>-->
+<!--                <li><%#= link_to image_tag("https://cdn-icons-png.flaticon.com/512/733/733613.png", size: "46x46"), user_google_oauth2_omniauth_authorize_path, method: :post %></li>-->
+<!--              </ul>-->
+<!--            </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+    <%# end %>
+<!--  </header>-->
+<!--</div>-->

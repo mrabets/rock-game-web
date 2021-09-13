@@ -1,0 +1,52 @@
+<title><%= provide(:title, "Users List") %></title>
+
+<div class="container">
+  <h1>User List</h1><br>
+
+  <%= render 'users/search_form.html.erb' %>
+
+  <%= form_tag batch_operation_users_path, method: :patch do %>
+    <%= submit_tag "Delete", class: "btn btn-danger" %>
+    <%= submit_tag "Block", class: "btn btn-warning" %>
+    <%= submit_tag "Unblock", class: "btn btn-info" %><br><br>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><input type="checkbox" onClick="toggle(this)" /> <br/></th>
+        <th><%= sort_link(@q, :id, 'ID') %></th>
+        <th><%= sort_link(@q, :name, 'Name') %></th>
+        <th><%= sort_link(@q, :provider, 'Provider') %></th>
+        <th><%= sort_link(@q, :created_at, 'First login') %></th>
+        <th><%= sort_link(@q, :last_sign_in_at, 'Last login') %></th>
+        <th><%= sort_link(@q, :blocked_at, 'Status') %></th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= check_box_tag 'users[]', user.id %>
+          </td>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.provider.capitalize %></td>
+          <td><%= user.created_at.to_formatted_s(:long) %></td>
+          <td><%= user.last_sign_in_at.to_formatted_s(:long) %></td>
+          <td><%= user.blocked_at?  ? "Block" : "Active" %></td>
+         </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <script type="text/javascript">
+      function toggle(source) {
+          checkboxes = document.getElementsByName('users[]');
+          for(var i=0, n=checkboxes.length;i<n;i++) {
+              checkboxes[i].checked = source.checked;
+          }
+      }
+  </script>
+</div>
