@@ -1,7 +1,5 @@
 # README
 
-Simple app with facebook, github, google authentications using [OmniAuth Gem](https://github.com/omniauth/omniauth). There is a table with sorting, filtering and searching with [Ransack Gem](https://github.com/activerecord-hackery/ransack).
-
 * Configuration
 
 ```
