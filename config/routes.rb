@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'rock_games/new'
+  get 'rock_games/create'
+  get 'rock_games/show'
+  get 'rock_games/index'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions'
