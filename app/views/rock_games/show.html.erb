@@ -1,2 +1,22 @@
-<h1>RockGames#show</h1>
-<p>Find me in app/views/rock_games/show.html.erb</p>
+<h1>Game #<%= @rock_game.id %></h1>
+
+<%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
+  <div id="game" class="game">
+    <% @moves.each do |move| %>
+      <button id="<%= move %>">
+        <%= move.capitalize %>
+      </button>
+    <% end %>
+  </div>
+<% } %>
+
+<script>
+    const buttons = document.querySelectorAll('#game button');
+
+    buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+            alert(button.id);
+        });
+    });
+</script>

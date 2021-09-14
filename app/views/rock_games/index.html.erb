@@ -1,2 +1,22 @@
 <h1>RockGames#index</h1>
-<p>Find me in app/views/rock_games/index.html.erb</p>
+
+  <table class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Moves</th>
+      <th scope="col">Username</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @rock_games.each do |game| %>
+    <tr>
+      <th scope="row"><%= game.id %></th>
+      <td><%= game.moves %></td>
+      <td>mrabets</td>
+      <td><%= link_to "Join", game %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>

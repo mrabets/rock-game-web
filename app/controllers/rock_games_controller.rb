@@ -16,9 +16,12 @@ class RockGamesController < ApplicationController
   end
 
   def show
+    @rock_game = RockGame.find params[:id]
+    @moves = @rock_game.moves.split
   end
 
   def index
+    @rock_games = RockGame.all
   end
 
 
