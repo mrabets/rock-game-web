@@ -1,18 +1,16 @@
-<div class="d-flex flex-column justify-content-center align-items-center">
-  <form class="row g-3">
-        <form>
-          <p><label for="move" class="form-label">Set of moves </label>
-            <input class="form-control" type="text" id="move" name="move"
-                   list="moves" placeholder="Enter your own..."></p>
-          <datalist id="moves">
-            <select name="donation">
-              <option></option>
-              <option value="rock-paper-scissors">rock-paper-scissors</option>
-              <option value="rock-spock-paper-lizard-scissors">rock-spock-paper-lizard-scissors</option>
-            </select>
-          </datalist>
-          <p><button class="btn btn-primary" type="submit">Send</button></p>
-        </form>
-  </form>
-</div>
-
+<%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
+  <%= form_for @rock_game, html: {class: "row g-3"} do |f| %><hr>
+    <%= f.label :moves, "Enter your moves" %>
+    <%= f.text_field :moves, list: 'moves', placeholder: "Enter your own...",
+                     class: "form-control", autocomplete: "off" %>
+    <datalist id="moves">
+      <option></option>
+      <% @types.each do |type| %>
+        <option value="<%= type %>"></option>
+      <% end %>
+    </datalist>
+    <p>
+      <%= f.submit 'Send', class: "btn btn-primary" %>
+    </p>
+  <% end %>
+<% } %>
