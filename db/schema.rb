@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_140004) do
+ActiveRecord::Schema.define(version: 2021_09_14_151407) do
 
   create_table "rock_games", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "set_of_moves", default: 0
-    t.text "moves"
+    t.string "moves"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
