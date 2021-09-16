@@ -24,7 +24,13 @@ class MovesController < ApplicationController
     @move = Move.new(move_params)
     # @move.user = current_user
     @move.save
-    redirect_to request.referrer   
+
+    html = render(
+      partial: 'moves/move',
+      locals: { move: @move }
+    )
+
+    ActionCable.server.broadcast "room_channel_#{@move.room_id}", { html: html }
   end
 
   # PATCH/PUT /moves/1 or /moves/1.json

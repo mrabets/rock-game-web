@@ -1,14 +1,19 @@
 
 <div class="chat-room">
+
    <p><%= @room.name %></p>
+
    <% @room.moves.each do |move| %>
-      <p><%= move.content %> - <%=
-       move.user.name %></p>
+      
+      <%= render 'moves/move', move: move  %>
+
    <% end %>
+
    <div class="chat-box">
      <%= render 'moves/form', move: 
      Move.new, room: @room %>
    </div>
+
 </div>     
 
 
