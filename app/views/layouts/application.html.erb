@@ -19,21 +19,20 @@
   <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <%= render 'layouts/header' %>
-
-      <% if notice %>
-        <div class="container">
-          <p class="alert alert-success"><%= notice %>
-          </p></div>
-      <% end %>
-      <% if alert %>
-        <div class="container">
+      
+      <div class="container">
+        <% if notice %>  
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
           <p class="alert alert-danger"><%= alert %></p>
-        </div>
-      <% end %>
+        <% end %>
 
-      <%= yield %>
-
-      <%= render 'layouts/footer' %>
+        <%= yield %>
+      
+        <%= render 'layouts/footer' %>
+      </div>
+      
     </div>
   </body>
 </html>
