@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :moves
+  resources :rooms
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions'

@@ -1,0 +1,26 @@
+<%= form_with(model: move) do |form| %>
+  <% if move.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(move.errors.count, "error") %> prohibited this move from being saved:</h2>
+
+      <ul>
+        <% move.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :room_id, value: room.id %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <div class="col-auto">
+    <%= form.text_field :content, placeholder: "Type your move...", class: 'form-control' %>
+  </div>
+
+  <div class="col-auto">
+    <%= form.submit "Add Move", class:'btn btn-primary' %>
+  </div>
+
+<% end %>

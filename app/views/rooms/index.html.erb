@@ -1,0 +1,17 @@
+<h1>Rooms</h1>
+
+<%= render 'form', room: Room.new %>
+
+<table class="responsive nowrap table table-hover" id="dttb-rooms" data-sort="true" data-source="<%= url_for(format: :json)%>">
+  <thead>
+    <tr>
+      <th data-data="name">Name</th>
+      <th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"></th>
+    </tr>
+  </thead>
+
+</table>
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>
