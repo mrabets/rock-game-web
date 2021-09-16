@@ -1,36 +1,46 @@
 import consumer from "./consumer"
 
 
-// const element = document.getElementById("room-id")
-// const room_id = element.getAttribute('data-room-id')
+document.addEventListener('turbolinks:load', () => {
+  
+  const room_element = document.getElementById('room-id')
+  const room_id = Number(room_element.getAttribute('data-room-id'))
 
-consumer.subscriptions.create({channel: "RoomChannel", room_id: 1},  {
-  connected() {
-    console.log("Connected with room id ")
-  },
+  console.log(consumer.subscriptions)
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+  consumer.subscriptions.subscriptions.forEach((subscription) => {
+    consumer.subscriptions.remove(subscription)
+  })
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-    // $(`#msg-${room_id}`).append('<div class="message"> ' + data.content + '</div>')
+  consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
+    connected() {
+      console.log("connected to " + room_id)
+      // Called when the subscription is ready for use on the server
+    },
 
-    console.log(data)
+    disconnected() {
+      // Called when the subscription has been terminated by the server
+    },
 
-    const element = document.getElementById('user-id')
-    const user_id = Number(element.getAttribute('data-user-id'))
+    received(data) {
+      // Called when there's incoming data on the websocket for this channel
+      // $(`#msg-${room_id}`).append('<div class="message"> ' + data.content + '</div>')
 
-    let html;
+      console.log(data)
 
-    if (user_id === data.move.user_id) {
-      html = data.mine
-    } else {
-      html = data.theirs
+      const element = document.getElementById('user-id')
+      const user_id = Number(element.getAttribute('data-user-id'))
+
+      let html;
+
+      if (user_id === data.move.user_id) {
+        html = data.mine
+      } else {
+        html = data.theirs
+      }
+
+      const moveContainer = document.getElementById('moves')
+      moveContainer.innerHTML = moveContainer.innerHTML + html
     }
-
-    const moveContainer = document.getElementById('moves')
-    moveContainer.innerHTML = moveContainer.innerHTML + html
-  }
+  });
 });
