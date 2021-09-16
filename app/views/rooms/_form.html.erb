@@ -1,22 +1,18 @@
-<%= form_with(model: room) do |form| %>
-  <% if room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+<%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
 
-      <ul>
-        <% room.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <%= form_for @room, html: {class: "row g-3"} do |f| %><hr>
+    <%= f.label :name, "Enter your moves" %>
+    <%= f.text_field :name, list: 'moves', placeholder: "Enter your own...",
+                     class: "form-control", autocomplete: "off" %>
+    <datalist id="moves">
+      <option></option>
+      <% @types.each do |type| %>
+        <option value="<%= type %>"></option>
+      <% end %>
+    </datalist>
+    <p>
+      <%= f.submit 'Send', class: "btn btn-primary" %>
+    </p>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<% } %>

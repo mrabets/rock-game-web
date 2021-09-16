@@ -1,15 +1,22 @@
-<h1>Rooms</h1>
+<h1>Game Rooms</h1>
 
-<table class="responsive nowrap table table-hover" id="dttb-rooms" data-sort="true" data-source="<%= url_for(format: :json)%>">
-  <thead>
+  <table class="table table-dark table-striped">
+    <thead>
     <tr>
-      <th data-data="name">Name</th>
-      <th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"></th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col"></th>
     </tr>
-  </thead>
-
-</table>
-
-<br>
-
-<%= link_to 'New Room', new_room_path %>
+    </thead>
+    <tbody>
+    <% @rooms.each do |room| %>
+    <tr>
+      <th scope="row"><%= room.id %></th>
+      <td><%= room.name %></td>
+      <td>mrabets</td>
+      <td><%= link_to "Join", room %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>

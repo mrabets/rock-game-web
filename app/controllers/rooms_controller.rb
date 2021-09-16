@@ -9,11 +9,13 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
+    @moves = Room.find(params[:id]).name.split
   end
 
   # GET /rooms/new
   def new
     @room = Room.new
+    @types = ['rock paper scissors', 'rock spock paper lizard scissors']
   end
 
   # GET /rooms/1/edit
@@ -24,14 +26,11 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
 
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
+    if @room.save
+      flash[:success] = 'Your game room has successfully added'
+      redirect_to @room
+    else
+      render 'new'
     end
   end
 

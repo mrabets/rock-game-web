@@ -2,6 +2,20 @@
 
 <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
+<h1>
+  Game room #<%= @room.id %>
+</h1>
+
+<%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
+  <div id="game" class="game">
+    <% @moves.each do |move| %>
+      <button id="<%= move %>">
+        <%= move.capitalize %>
+      </button>
+    <% end %>
+  </div>
+<% } %>
+
 <div class="chat-room">
 
    <p><%= @room.name %></p>
@@ -20,10 +34,17 @@
 </div>     
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @room.name %>
-</p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+
+<script>
+
+  const buttons = document.querySelectorAll('#game button');
+
+  buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+            document.getElementById('move-choice').value = button.id
+            // getGameResult(button.id);
+        });
+    });
+</script>

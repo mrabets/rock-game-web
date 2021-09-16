@@ -15,12 +15,17 @@
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
+<%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
+
   <div class="col-auto">
-    <%= form.text_field :content, placeholder: "Type your move...", class: 'form-control' %>
+    <%= form.text_field :content, placeholder: "Click on button...", class: 'form-control', id: "move-choice", readonly: true %>
   </div>
 
   <div class="col-auto">
     <%= form.submit "Add Move", class:'btn btn-primary' %>
   </div>
+
+
+<% } %>
 
 <% end %>
