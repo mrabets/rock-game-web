@@ -19,7 +19,18 @@ consumer.subscriptions.create({channel: "RoomChannel", room_id: 1},  {
 
     console.log(data)
 
+    const element = document.getElementById('user-id')
+    const user_id = Number(element.getAttribute('data-user-id'))
+
+    let html;
+
+    if (user_id === data.move.user_id) {
+      html = data.mine
+    } else {
+      html = data.theirs
+    }
+
     const moveContainer = document.getElementById('moves')
-    moveContainer.innerHTML = moveContainer.innerHTML + data.html
+    moveContainer.innerHTML = moveContainer.innerHTML + html
   }
 });
