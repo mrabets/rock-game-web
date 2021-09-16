@@ -18,5 +18,8 @@ consumer.subscriptions.create({channel: "RoomChannel", room_id: 1},  {
     // $(`#msg-${room_id}`).append('<div class="message"> ' + data.content + '</div>')
 
     console.log(data)
+
+    const moveContainer = document.getElementById('moves')
+    moveContainer.innerHTML = moveContainer.innerHTML + data.html
   }
 });

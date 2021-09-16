@@ -3,11 +3,11 @@
 
    <p><%= @room.name %></p>
 
-   <% @room.moves.each do |move| %>
-      
-      <%= render 'moves/move', move: move  %>
-
-   <% end %>
+    <div id="moves">
+      <% @room.moves.each do |move| %>
+        <%= render 'moves/move', move: move  %>
+      <% end %>
+    </div>
 
    <div class="chat-box">
      <%= render 'moves/form', move: 

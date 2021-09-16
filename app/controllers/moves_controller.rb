@@ -25,12 +25,7 @@ class MovesController < ApplicationController
     # @move.user = current_user
     @move.save
 
-    html = render(
-      partial: 'moves/move',
-      locals: { move: @move }
-    )
-
-    ActionCable.server.broadcast "room_channel_#{@move.room_id}", { html: html }
+    SendMoveJob.perform_later(@move)
   end
 
   # PATCH/PUT /moves/1 or /moves/1.json
