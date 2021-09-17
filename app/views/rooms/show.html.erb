@@ -24,6 +24,10 @@
       <% @room.moves.each do |move| %>
         <%= render 'moves/move', move: move  %>
       <% end %>
+
+      <div id="game-result">
+      </div>
+      
     </div>
 
    <div class="chat-box">
@@ -37,6 +41,11 @@
 
 
 <script>
+
+// Get result methods
+
+  
+    
 
   const buttons = document.querySelectorAll('#game button');
 

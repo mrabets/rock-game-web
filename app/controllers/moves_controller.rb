@@ -25,7 +25,13 @@ class MovesController < ApplicationController
     # @move.user = current_user
     @move.save
 
-    SendMoveJob.perform_later(@move)
+    # Send result
+    if (Move.where(room_id: move_params[:room_id]).limit(2).map(&:content).size == 2)
+      moves = Move.where(room_id: move_params[:room_id]).limit(2).map(&:content)
+      SendMoveJob.perform_later(@move, get_message_result(moves[0], moves[1]))
+    else
+      SendMoveJob.perform_later(@move)
+    end
   end
 
   # PATCH/PUT /moves/1 or /moves/1.json
@@ -51,6 +57,21 @@ class MovesController < ApplicationController
   end
 
   private
+    
+    def get_message_result(first_move, second_move)
+      number_result = ->a,b{(2+a.sum%88%6-b.sum%88%6)%5%3}
+      number = number_result.call(first_move.to_s, second_move.to_s)
+
+      case number
+      when 0
+        return "Player one win"
+      when 1
+        return "Player two win"
+      end
+
+      "Draw"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_move
       @move = Move.find(params[:id])
