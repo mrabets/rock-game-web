@@ -6,6 +6,7 @@
   Game room #<%= @room.id %>
 </h1>
 
+
 <%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
   <div id="game" class="game">
     <% @moves.each do |move| %>
@@ -21,16 +22,14 @@
    <p><%= @room.name %></p>
 
     <div id="moves">
-      <% @room.moves.each do |move| %>
-        <%= render 'moves/move', move: move  %>
-      <% end %>
+      
 
       <div id="game-result">
       </div>
       
     </div>
 
-   <div class="chat-box">
+   <div id="accept-button" class="chat-box">
      <%= render 'moves/form', move: 
      Move.new, room: @room %>
    </div>
@@ -41,14 +40,7 @@
 
 
 <script>
-
-// Get result methods
-
-  
-    
-
   const buttons = document.querySelectorAll('#game button');
-
   buttons.forEach((button) => {
 
         button.addEventListener('click', () => {

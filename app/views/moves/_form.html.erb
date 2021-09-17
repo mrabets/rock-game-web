@@ -11,7 +11,8 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :room_id, value: room.id %>
+<div id="accept-form">
+    <%= form.hidden_field :room_id, value: room.id %>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
@@ -21,11 +22,22 @@
     <%= form.text_field :content, placeholder: "Click on button...", class: 'form-control', id: "move-choice", readonly: true %>
   </div>
 
-  <div class="col-auto">
+  <div id="accept-button" class="col-auto">
     <%= form.submit "Add Move", class:'btn btn-primary' %>
   </div>
+</div>
 
 
 <% } %>
 
 <% end %>
+
+<script type="text/javascript">
+  const accept = document.querySelector("#accept-button input")
+  console.log(accept)
+  accept.addEventListener('click', () => {
+            document.getElementById('accept-form').style.display = 'none';
+        });
+
+  
+</script>
