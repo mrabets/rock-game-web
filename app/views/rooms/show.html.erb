@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'rooms', 'data-turbolinks-track': 'reload' %>
+
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
 <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
@@ -24,15 +26,4 @@
      <%= render 'moves/form', move: 
      Move.new, room: @room %>
    </div>
-</div>     
-
-<script>
-  const buttons = document.querySelectorAll('#game button');
-  buttons.forEach((button) => {
-
-        button.addEventListener('click', () => {
-            document.getElementById('move-choice').value = button.id
-            // getGameResult(button.id);
-        });
-    });
-</script>
+</div>   

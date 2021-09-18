@@ -14,9 +14,10 @@ ActiveStorage.start()
 
 import * as bootstrap from 'bootstrap'
 import "../stylesheets/application"
-// import "../scripts/script"
+
 require("scripts/script")
 require("jquery")
+require("packs/rooms")
 
 import Chart from 'chart.js/auto';
 

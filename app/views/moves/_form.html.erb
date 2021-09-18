@@ -1,8 +1,9 @@
+<%= javascript_pack_tag 'moves', 'data-turbolinks-track': 'reload' %>
+
 <%= form_with(model: move) do |form| %>
   <% if move.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(move.errors.count, "error") %> prohibited this move from being saved:</h2>
-
       <ul>
         <% move.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,25 +12,18 @@
     </div>
   <% end %>
 
-<div id="accept-form">
-  <%= form.hidden_field :room_id, value: room.id %>
-
-  <%= form.hidden_field :user_id, value: current_user.id %>
-
-  <%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
-
-    <div class="col-auto">
-      <%= form.hidden_field :content, placeholder: "Click on button...", class: 'form-control', id: "move-choice", readonly: true %>
-    </div>
-
-    <div id="accept-button" class="col-auto"><br>
-      <%= form.submit "Make Move", class:'btn btn-primary btn-sm' %>
-    </div>
-</div>
-
-
-<% } %>
-
+  <div id="accept-form">
+    <%= form.hidden_field :room_id, value: room.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
+      <div class="col-auto">
+        <%= form.hidden_field :content, class: 'form-control', id: "move-choice" %>
+      </div>
+      <div id="accept-button" class="col-auto"><br>
+        <%= form.submit "Make Move", class:'btn btn-primary btn-sm' %>
+      </div>
+    <% } %>
+  </div>
 <% end %>
 
 <script type="text/javascript">

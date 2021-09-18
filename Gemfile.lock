@@ -116,7 +116,6 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
-    jquery-datatables (1.10.20)
     jwt (2.2.3)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -219,10 +218,6 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
-    ransack (2.4.2)
-      activerecord (>= 5.2.4)
-      activesupport (>= 5.2.4)
-      i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -325,7 +320,6 @@ DEPENDENCIES
   capybara
   devise
   jbuilder (~> 2.7)
-  jquery-datatables (~> 1.10)
   listen (~> 3.3)
   mysql2 (~> 0.5)
   omniauth-facebook
@@ -337,7 +331,6 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   rails-controller-testing
-  ransack
   redis
   rspec-rails (~> 4.0.0.beta2)
   rubocop

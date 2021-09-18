@@ -10,14 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_pack_tag 'scripts/script', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.2/datatables.min.css"/>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.2/datatables.min.js"></script>
   </head>
 
   <body class="d-flex h-100 text-center text-white bg-dark" cz-shortcut-listen="true">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      
       <%= render 'layouts/header' %>
       
       <div class="container">
@@ -34,8 +31,7 @@
         <%= yield %>
       
         <%= render 'layouts/footer' %>
-      </div>
-      
+      </div>   
     </div>
   </body>
 </html>
