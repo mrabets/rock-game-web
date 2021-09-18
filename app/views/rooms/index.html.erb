@@ -12,12 +12,14 @@
     </thead>
     <tbody>
     <% @rooms.each do |room| %>
-    <tr>
-      <th scope="row"><%= room.id %></th>
-      <td><%= room.name %></td>
-      <td>mrabets</td>
-      <td><%= link_to "Join", room %></td>
-    </tr>
+      <% if Move.where(room_id: room.id).size == 1 %>
+      <tr>
+        <th scope="row"><%= room.id %></th>
+        <td><%= room.name %></td>
+        <td>mrabets</td>
+        <td><%= link_to "Join", room %></td>
+      </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>

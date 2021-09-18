@@ -28,7 +28,6 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
 
     if @room.save
-      flash[:success] = 'Your game room has successfully added'
       redirect_to @room
     else
       @types = ['rock paper scissors', 'rock spock paper lizard scissors']
