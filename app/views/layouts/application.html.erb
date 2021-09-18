@@ -21,11 +21,14 @@
       <%= render 'layouts/header' %>
       
       <div class="container">
-        <% if notice %>  
-          <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
+        <% if notice %>
+          <div class="alert alert-success"><%= notice %></div>
+        <% elsif alert %>
+          <div class="alert alert-danger"><%= alert %></div>
+        <% else %>
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
         <% end %>
 
         <%= yield %>

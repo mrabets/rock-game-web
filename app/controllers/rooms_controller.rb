@@ -30,6 +30,7 @@ class RoomsController < ApplicationController
       flash[:success] = 'Your game room has successfully added'
       redirect_to @room
     else
+      @types = ['rock paper scissors', 'rock spock paper lizard scissors']
       render 'new'
     end
   end
