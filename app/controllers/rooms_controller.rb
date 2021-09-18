@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @moves = Room.find(params[:id]).name.split
+    @button_colors = get_button_color(@moves)
   end
 
   # GET /rooms/new
@@ -58,6 +59,16 @@ class RoomsController < ApplicationController
   end
 
   private
+    def get_button_color(moves)
+      button_colors = ['success', 'danger', 'warning', 'info', 'light']
+
+      while(button_colors.size < moves.size)
+        button_colors += button_colors
+      end
+
+      button_colors
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])

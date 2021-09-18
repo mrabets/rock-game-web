@@ -1,16 +1,14 @@
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
-
 <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
 <h1>
   Game room #<%= @room.id %>
 </h1>
 
-
 <%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
   <div id="game" class="game">
-    <% @moves.each do |move| %>
-      <button id="<%= move %>">
+    <% @moves.each.with_index(0) do |move, index| %>
+      <button id="<%= move %>" class="btn btn-<%= @button_colors[index] %>">
         <%= move.capitalize %>
       </button>
     <% end %>
@@ -18,26 +16,15 @@
 <% } %>
 
 <div class="chat-room">
-
-   <p><%= @room.name %></p>
-
     <div id="moves">
-      
-
       <div id="game-result">
-      </div>
-      
+      </div>    
     </div>
-
    <div id="accept-button" class="chat-box">
      <%= render 'moves/form', move: 
      Move.new, room: @room %>
    </div>
-
 </div>     
-
-
-
 
 <script>
   const buttons = document.querySelectorAll('#game button');
