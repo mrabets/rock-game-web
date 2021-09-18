@@ -4,8 +4,7 @@
   <%= render 'shared/error_messages' %>
 
   <%= form_for @room, html: {class: "row g-3"} do |f| %>
-    <%= f.label :name, "Enter your moves" %>
-    <%= f.text_field :name, list: 'moves', placeholder: "Enter your own or choose defaults...",
+    <%= f.text_field :name, list: 'moves', placeholder: "Choose defaults or your own",
                      class: "form-control", autocomplete: "off", required: true %>
     <datalist id="moves">
       <option></option>
