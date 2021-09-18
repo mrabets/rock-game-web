@@ -12,19 +12,19 @@
   <% end %>
 
 <div id="accept-form">
-    <%= form.hidden_field :room_id, value: room.id %>
+  <%= form.hidden_field :room_id, value: room.id %>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-<%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
+  <%= content_tag(:div, class: "d-flex flex-column justify-content-center align-items-center") { %>
 
-  <div class="col-auto">
-    <%= form.text_field :content, placeholder: "Click on button...", class: 'form-control', id: "move-choice", readonly: true %>
-  </div>
+    <div class="col-auto">
+      <%= form.hidden_field :content, placeholder: "Click on button...", class: 'form-control', id: "move-choice", readonly: true %>
+    </div>
 
-  <div id="accept-button" class="col-auto">
-    <%= form.submit "Add Move", class:'btn btn-primary' %>
-  </div>
+    <div id="accept-button" class="col-auto"><br>
+      <%= form.submit "Add Move", class:'btn btn-primary btn-sm' %>
+    </div>
 </div>
 
 
