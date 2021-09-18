@@ -16,7 +16,7 @@
       <tr>
         <th scope="row"><%= room.id %></th>
         <td><%= room.name %></td>
-        <td>mrabets</td>
+        <td><%= User.find(Move.where(room_id: room.id).first.user_id).name %></td>
         <td><%= link_to "Join", room %></td>
       </tr>
       <% end %>
