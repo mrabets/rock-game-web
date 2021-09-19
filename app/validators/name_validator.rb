@@ -4,6 +4,8 @@ class NameValidator < ActiveModel::EachValidator
 
     if splited_value.size < 3
       record.errors[attribute] << (options[:message] || "amount mustn't be less than 3")
+    elsif splited_value.size > 7
+      record.errors[attribute] << (options[:message] || "amount mustn't be more than 7")
     elsif splited_value.size.even?
       record.errors[attribute] << (options[:message] || "amount must be odd")
     elsif splited_value.uniq.size != splited_value.size
