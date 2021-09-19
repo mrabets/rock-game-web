@@ -27,3 +27,36 @@
      Move.new, room: @room %>
    </div>
 </div>   
+
+<p><br>
+  <a class="btn btn-outline-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Rules
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <% @moves.each do |move| %>
+        <th scope="col"><%= move %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% n = @moves.size %>
+    <% @moves.each.with_index do |move, i| %>
+      <tr> 
+        <th scope="row"><%= move %></th>
+        <% @moves.each.with_index do |_, j| %>
+          <% number = (n + i - j) % n %>
+          <td><%= get_message(number) %></td>
+        <% end %>
+      </tr>
+    <% end %>       
+  </tbody>
+</table>
+  </div>
+</div>

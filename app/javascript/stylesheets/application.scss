@@ -2,6 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css?family=Bangers|Cinzel:400,700,900|Lato:100,300,400,700,900|Lobster|Lora:400,700|Mansalva|Muli:200,300,400,600,700,800,900|Open+Sans:300,400,600,700,800|Oswald:200,300,400,500,600,700|Roboto:100,300,400,500,700,900&display=swap');
 
+.table {
+  color: white;
+}
+
+.collapse {
+  color: white;
+  
+  text-shadow: none;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, .25);
+}
+
 * {
   font-family: 'Oswald', serif;
 }
@@ -113,15 +127,3 @@ body {
   line-height: 1.8;
   padding: 0 16px;
 }
-
-//#logo {
-//  float: left;
-//  margin-right: 10px;
-//  font-size: 1.7em;
-//  color: white;
-//  text-transform: uppercase;
-//  letter-spacing: -1px;
-//  padding-bottom: 15px;
-//  font-weight: bold;
-//  text-decoration: none;
-//}
