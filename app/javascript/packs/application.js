@@ -18,6 +18,7 @@ import "../stylesheets/application"
 require("scripts/script")
 require("jquery")
 require("packs/rooms")
+require("packs/home")
 
 import Chart from 'chart.js/auto';
 
