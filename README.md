@@ -3,7 +3,6 @@
 * Configuration
 
 ```
-cd web-users
 
 rm config/credentials.yml.enc
 
